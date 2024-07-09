@@ -40,11 +40,11 @@ def zipping_ssid_password(file):
 def make_doc(zip_file):
     path = os.getcwd()
     for file in os.listdir(path):
-        if file.startswith("confidential") and file.endswith(".txt"):
+        if file.startswith("wi_fi") and file.endswith(".txt"):
             os.remove(path+"\\"+file)
     
     for id,pwd in zip_file:
-        with open("confidential.txt","a") as doc:
+        with open("wi_fi.txt","a") as doc:
             doc.write(f"SSID: {id} --------------- Password: {pwd}\n")
     
     return doc.name
