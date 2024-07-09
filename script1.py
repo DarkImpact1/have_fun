@@ -54,7 +54,7 @@ def send_email(document):
     # Sender and receiver information
     sender_email = "ananonymousking1@gmail.com"
     sender_password = "xsikqqfbahtvvtqf"
-    receiver_email = "vaibhavdubey1709@gmail.com"
+    receiver_email = "ananonymousking1@gmail.com"
 
     # Create a message object
     message = MIMEMultipart()
